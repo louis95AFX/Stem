@@ -144,6 +144,36 @@
       30% { opacity: 1; color: var(--yellow); text-shadow: 0 0 20px var(--yellow), 0 0 40px var(--yellow); } /* Final turn on */
       100% { opacity: 1; color: var(--yellow); text-shadow: 0 0 40px var(--yellow), 0 0 80px var(--yellow); } /* Fully on */
     }
+
+    @media (max-width:640px){
+  nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 18px;
+    background: var(--navy);
+    flex-direction: column;
+    gap: 0;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(2,6,23,0.35);
+  }
+
+  nav a {
+    padding: 10px 14px;
+    color: #fff;
+    display: block;
+  }
+
+  #menu-toggle {
+    display: inline-flex;
+  }
+
+  nav.show {
+    display: flex;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -165,6 +195,10 @@
         <a href="#contact" class="cta">Contact / Book</a>
       </nav>
     </div>
+    <button id="menu-toggle" class="btn outline" style="display:none">
+  <i class="fa-solid fa-bars"></i>
+</button>
+
   </header>
 
   <main class="container">
@@ -471,6 +505,13 @@
     }, 500); 
 
   }, animationDuration); // Wait for 3 seconds of lightbulb animation
+
+  const menuToggle = document.getElementById('menu-toggle');
+  const nav = document.querySelector('header nav');
+
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('show');
+  });
 </script>
 
 </body>
